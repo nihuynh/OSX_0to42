@@ -23,6 +23,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0.12
 # Wipe the dock
 defaults write com.apple.dock persistent-apps -array
 
+# Place the dock on the left
+defaults write com.apple.Dock orientation -string left
+
 # Hot corners
 # Possible values:
 #  0: no-op
@@ -44,3 +47,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+
+# kill the stuff
+killall Dock
+killall Finder
