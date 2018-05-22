@@ -1,0 +1,4 @@
+defaults read > unset_default
+defaults read > final_default
+diff -C3 unset_default final_default
+rm unset_default final_default

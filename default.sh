@@ -48,6 +48,10 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
+# set the secondary button on the apple mouse
+defaults write com.apple.driver.AppleHIDMouse Button2 -int 2
+defaults write com.apple.driver.AppleHIDMouse ButtonDominance -int 1
+
 # kill the stuff
 killall Dock
 killall Finder
