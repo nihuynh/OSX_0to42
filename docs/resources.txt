@@ -1,3 +1,5 @@
+# you can read default with default read
+# check stuff here https://www.defaults-write.com
 defaults read > unset_default
 defaults read > final_default
 diff -C3 unset_default final_default
