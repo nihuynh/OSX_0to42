@@ -1,5 +1,5 @@
 tell application "System Events"
-	tell expose preferences
+	tell screen saver preferences
 		get properties
 	end tell
 end tell

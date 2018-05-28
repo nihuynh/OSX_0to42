@@ -1,3 +1,7 @@
+# https://apple.stackexchange.com/questions/91679/is-there-a-way-to-set-an-application-shortcut-in-the-keyboard-preference-pane-vi
+# http://krypted.com/mac-os-x/defaults-symbolichotkeys/
+
+
 # you can read default with default read
 # check stuff here https://www.defaults-write.com
 defaults read > unset_default
