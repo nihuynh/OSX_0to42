@@ -34,7 +34,7 @@ on changeBackground()
 		delay 0.3
 		tell application "System Events"
 			tell current desktop
-				set pictures folder to "/Users/nico/Pictures/Wallpapers"
+				set pictures folder to "/Volumes/Storage/goinfre/nihuynh/Pictures/Wallpapers"
 				set picture rotation to 1
 				set change interval to 600
 				set random order to true
