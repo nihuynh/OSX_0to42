@@ -9,3 +9,4 @@ sh $HOME/fonts/install.sh && rm -rf $HOME/fonts
 # Install the themes
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git --depth=1 $HOME/themes
 open $HOME/themes/schemes/* -a iterm && rm -rf $HOME/themes
+exit 0

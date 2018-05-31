@@ -57,24 +57,18 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
-# Change minimize/maximize window effect
-defaults write com.apple.dock mineffect -string "scale"
+# Add bluetooth and sound to the menu bar
+# found here : https://www.jamf.com/jamf-nation/discussions/10576/menu-bar-customization
+open '/System/Library/CoreServices/Menu Extras/Volume.menu'
+open '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
 
-# TODO UNUSED
-# Increase sound quality for Bluetooth headphones/headsets
-# defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-
-# TODO BROKEN
-# Require password as soon as screensaver or sleep mode starts
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Disable animations when opening and closing windows (dont do shit in sierra)
-# defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-
-# Change the expose animation speed (dont do shit in sierra)
-# defaults write com.apple.dock expose-animation-duration -float 0
-
+# Desktop shotcuts for switching spaces (effective after closing session)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string>\
+<key>parameters</key><array><integer>65535</integer><integer>18</integer><integer>262144</integer></array></dict></dict>"
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 119 "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string>\
+<key>parameters</key><array><integer>65535</integer><integer>19</integer><integer>262144</integer></array></dict></dict>"
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 120 "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string>\
+<key>parameters</key><array><integer>65535</integer><integer>20</integer><integer>262144</integer></array></dict></dict>"
 
 # kill the stuff
 for app in "Dashboard" "Dock" "Finder" ; do
@@ -83,3 +77,4 @@ done
 
 # DeleteAll_.DS_onOSXDisk
 find ~ -name ".DS_Store" -delete;
+exit 0
