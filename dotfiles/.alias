@@ -40,6 +40,9 @@ function nscan {
 function tree {
 	find . -type d -maxdepth ${@:-2} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
 }
+function clean_ds {
+	find ${@:-~} -name ".DS_Store" -delete
+}
 # -------------------------------------------------------------------
 #  42 alias
 alias kitty="norminette -R CheckForbiddenSourceHeader"
