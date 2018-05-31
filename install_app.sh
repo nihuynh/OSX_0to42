@@ -4,9 +4,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 # Install brew
 rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew  && brew update
 # Install fonts
+mkdir $HOME/Library/Fonts
 git clone https://github.com/powerline/fonts.git --depth=1 $HOME/fonts
-sh $HOME/fonts/install.sh && rm -rf $HOME/fonts
+sh $HOME/fonts/install.sh
 # Install the themes
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git --depth=1 $HOME/themes
-open $HOME/themes/schemes/* -a iterm && rm -rf $HOME/themes
-exit 0
+# open $HOME/themes/schemes/* -a iterm && rm -rf $HOME/themes
+rm -rf $HOME/fonts && exit 0

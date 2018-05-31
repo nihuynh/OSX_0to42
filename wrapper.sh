@@ -7,6 +7,10 @@ ln -sF $PWD/dotfiles/.alias ~/.alias
 ln -sF $PWD/dotfiles/.myzshrc ~/.myzshrc
 ln -sF $PWD/dotfiles/.vimrc ~/.vimrc
 ln -sF $PWD/dotfiles/.zshrc ~/.zshrc
+ln -sF $PWD/dotfiles/.zshrc_history ~/.zshrc_history
+ln -sF $PWD/dotfiles/.vscode ~/.vscode
+# Link the goinfre
+ln -sF /sgoinfre/goinfre/Perso/nihuynh goinfre
 # run .defaults
 sh $DOTPATH/set_defaults.sh
 # run the applescripts

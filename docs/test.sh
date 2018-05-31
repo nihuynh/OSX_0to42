@@ -1,6 +1,7 @@
-# Desktop
-defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 118 '{enabled = 1; value = { parameters = (65535, 18, 262144); type = standard; }; }'
-defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 119 '{enabled = 1; value = { parameters = (65535, 19, 262144); type = standard; }; }'
-defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 120 '{enabled = 1; value = { parameters = (65535, 20, 262144); type = standard; }; }'
-
-defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 120 "{enabled = 0; value = { parameters = (65535, 20, 262144); type = standard; }; }"
+# Desktop shotcuts for switching spaces (effective after closing session)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 118 "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string>\
+<key>parameters</key><array><integer>65535</integer><integer>18</integer><integer>262144</integer></array></dict></dict>"
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 119 "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string>\
+<key>parameters</key><array><integer>65535</integer><integer>19</integer><integer>262144</integer></array></dict></dict>"
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 120 "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string>\
+<key>parameters</key><array><integer>65535</integer><integer>20</integer><integer>262144</integer></array></dict></dict>"
