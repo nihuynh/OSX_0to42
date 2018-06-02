@@ -77,4 +77,3 @@ done
 
 # DeleteAll_.DS_onOSXDisk
 find ~ -name ".DS_Store" -delete;
-exit 0
