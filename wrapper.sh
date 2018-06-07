@@ -31,6 +31,7 @@ ln -sF $PWD/dotfiles/.myzshrc ~/.myzshrc
 ln -sF $PWD/dotfiles/.vimrc ~/.vimrc
 ln -sF $PWD/dotfiles/.zshrc ~/.zshrc
 ln -sF $PWD/dotfiles/.zsh_history ~/.zsh_history
+ln -sF $PWD/dotfiles/.vscode ~/.vscode
 # Link the goinfre
 echo "Linking to the NAS..."
 rm -rf ~/goinfre
