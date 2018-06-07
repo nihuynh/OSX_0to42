@@ -21,12 +21,14 @@ set ruler
 "set mouse=a
 
 " Show trailing whitespace:
-hi TrailWhite ctermbg=red ctermfg=white guibg=#592929
-match TrailWhite /\s\+$/
+" highlight TrailWhite ctermbg=red ctermfg=white guibg=#592929
+" match TrailWhite /\s\+$/
 
 "80 Columns Max
-hi OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+match OverLength /\s\+$/
+match OverLength /^\t*\zs \+/
 
 " set colours to 256 for iTerm2
 set t_Co=256
