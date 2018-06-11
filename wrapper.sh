@@ -35,7 +35,7 @@ ln -sF $PWD/dotfiles/.vscode ~/.vscode
 # Link the goinfre
 echo "Linking to the NAS..."
 rm -rf ~/goinfre
-ln -sF /sgoinfre/goinfre/Perso/nihuynh ~/goinfre
+ln -sF /sgoinfre/goinfre/Perso/nihuynh ~/NAS
 # run .defaults
 echo "Setting defaults..."
 sh $DOTPATH/set_defaults.sh
