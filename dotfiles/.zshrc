@@ -17,10 +17,18 @@ if [[ -f ~/.alias ]]; then
 source ~/.alias
 fi
 export PATH=$HOME/.brew/bin:$PATH
-# Set docker env variables
-eval export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/nihuynh/.docker/machine/machines/default"
-export DOCKER_MACHINE_NAME="default"
-# Run this command to configure your shell: 
-# eval $(docker-machine env default)
+
+# Xquartz & docker
+set PATH $PATH:/usr/X11R6/bin
+
+# Display settings for XQuartz (Dietrich Onnasch)
+# X11_FOLDER=/tmp/.X11-unix
+# currentUser=`(set \`whoami\`; echo $1)`
+# bb=`ls -l $X11_FOLDER | grep $currentUser`
+# bbb=${bb/*X/:}
+# usedDISPLAY=$bbb.0
+# export DISPLAY=$usedDISPLAY
+
+# Docker config:
+eval $(docker-machine env)
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
