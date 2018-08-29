@@ -3,7 +3,6 @@ syntax on
 
 " be iMproved
 set nocompatible
-"indenting
 
 " Make tabs as wide as two spaces
 set tabstop=2
@@ -20,19 +19,17 @@ set ruler
 "enable mouse for iterm2
 "set mouse=a
 
-" Show trailing whitespace:
-" hi TrailWhite ctermbg=red ctermfg=white guibg=#592929
-" match TrailWhite /\s\+$/
-   
-" test line test line test line test line test line test line test line test line test
-
 "80 Columns Max
 hi OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
-match OverLength /\s\+$/
 
-" match OverLength /\s\+$/
-" match OverLength /^\t*\zs \+/
+" Show trailing whitespace:
+hi TrailWhite ctermbg=red ctermfg=white guibg=#592929
+2match TrailWhite /\s\+$/
+
+" Test for the Highlights
+   
+" test line test line test line test line test line test line test line test line test
 
 " set colours to 256 for iTerm2
 set t_Co=256

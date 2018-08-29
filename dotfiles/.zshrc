@@ -10,16 +10,16 @@ setopt inc_append_history
 setopt share_history
 
 if [[ -f ~/.myzshrc ]]; then
-source ~/.myzshrc
+	source ~/.myzshrc
 fi
 
 if [[ -f ~/.alias ]]; then
-source ~/.alias
+	source ~/.alias
 fi
 export PATH=$HOME/.brew/bin:$PATH
 
 # Xquartz & docker
-set PATH $PATH:/usr/X11R6/bin
+# set PATH $PATH:/usr/X11R6/bin
 
 # Display settings for XQuartz (Dietrich Onnasch)
 # X11_FOLDER=/tmp/.X11-unix
@@ -30,5 +30,5 @@ set PATH $PATH:/usr/X11R6/bin
 # export DISPLAY=$usedDISPLAY
 
 # Docker config:
-eval $(docker-machine env)
-IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+# eval $(docker-machine env)
+# IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
