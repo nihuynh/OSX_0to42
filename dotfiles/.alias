@@ -12,6 +12,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls -lha'
+# salut momo**
 # -------------------------------------------------------------------
 function vbc {
 	open ${@:-.} -a Visual\ Studio\ Code;
