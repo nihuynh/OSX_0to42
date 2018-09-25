@@ -17,10 +17,12 @@ class HeartbeatTestCase(TestCase):
 
         class Args(object):
             exclude = []
-            hide_filenames = ['.*']
+            hide_file_names = ['.*']
+            hide_project_names = []
             include = []
             plugin = None
             include_only_with_project_file = None
+            local_file = None
 
         data = {
             'entity': os.path.realpath('tests/samples/codefiles/python.py'),
@@ -50,10 +52,12 @@ class HeartbeatTestCase(TestCase):
 
         class Args(object):
             exclude = []
-            hide_filenames = []
+            hide_file_names = []
+            hide_project_names = []
             include = []
             plugin = None
             include_only_with_project_file = None
+            local_file = None
 
         data = {
             'entity': os.path.realpath('tests/samples/codefiles/python.py'),
@@ -74,7 +78,8 @@ class HeartbeatTestCase(TestCase):
         logging.disable(logging.NOTSET)
 
         class Args(object):
-            hide_filenames = ['.*']
+            hide_file_names = ['.*']
+            hide_project_names = []
             plugin = None
 
         branch = 'abc123'
@@ -95,7 +100,8 @@ class HeartbeatTestCase(TestCase):
         logging.disable(logging.NOTSET)
 
         class Args(object):
-            hide_filenames = ['.*']
+            hide_file_names = ['.*']
+            hide_project_names = []
             plugin = None
 
         branch = 'abc123'

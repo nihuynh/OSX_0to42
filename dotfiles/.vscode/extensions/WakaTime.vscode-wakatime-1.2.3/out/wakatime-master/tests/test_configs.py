@@ -55,7 +55,8 @@ class ConfigsTestCase(TestCase):
 
         self.assertEquals(int(str(e.exception)), AUTH_ERROR)
         expected_stdout = u('')
-        expected_stderr = open('tests/samples/output/configs_test_config_file_not_passed_in_command_line_args').read()
+        expected_stderr = open('tests/samples/output/common_usage_header').read()
+        expected_stderr += open('tests/samples/output/configs_test_config_file_not_passed_in_command_line_args').read()
         self.assertEquals(sys.stdout.getvalue(), expected_stdout)
         self.assertEquals(sys.stderr.getvalue(), expected_stderr)
         self.patched['wakatime.session_cache.SessionCache.get'].assert_not_called()
@@ -107,7 +108,8 @@ class ConfigsTestCase(TestCase):
         self.assertEquals(int(str(e.exception)), AUTH_ERROR)
 
         expected_stdout = u('')
-        expected_stderr = open('tests/samples/output/configs_test_missing_config_file').read()
+        expected_stderr = open('tests/samples/output/common_usage_header').read()
+        expected_stderr += open('tests/samples/output/configs_test_missing_config_file').read()
         self.assertEquals(sys.stdout.getvalue(), expected_stdout)
         self.assertEquals(sys.stderr.getvalue(), expected_stderr)
 
@@ -414,7 +416,7 @@ class ConfigsTestCase(TestCase):
             self.assertSessionCacheSaved()
 
     @log_capture()
-    def test_does_not_hide_filenames_from_invalid_regex(self, logs):
+    def test_does_not_hide_file_names_from_invalid_regex(self, logs):
         logging.disable(logging.NOTSET)
 
         self.patched['wakatime.packages.requests.adapters.HTTPAdapter.send'].return_value = CustomResponse()
@@ -434,9 +436,9 @@ class ConfigsTestCase(TestCase):
             self.assertNothingPrinted()
 
             actual = self.getLogOutput(logs)
-            expected = u('WakaTime WARNING Regex error (unbalanced parenthesis) for include pattern: invalid(regex')
+            expected = u('WakaTime WARNING Regex error (unbalanced parenthesis) for hide_file_names pattern: invalid(regex')
             if self.isPy35OrNewer:
-                expected = 'WakaTime WARNING Regex error (missing ), unterminated subpattern at position 7) for include pattern: invalid(regex'
+                expected = 'WakaTime WARNING Regex error (missing ), unterminated subpattern at position 7) for hide_file_names pattern: invalid(regex'
             self.assertEquals(expected, actual)
 
             heartbeat = {
@@ -453,6 +455,46 @@ class ConfigsTestCase(TestCase):
                 'user_agent': ANY,
             }
 
+            self.assertHeartbeatSent(heartbeat)
+
+            self.assertHeartbeatNotSavedOffline()
+            self.assertOfflineHeartbeatsSynced()
+            self.assertSessionCacheSaved()
+
+    def test_obfuscte_project_names(self):
+        self.patched['wakatime.packages.requests.adapters.HTTPAdapter.send'].return_value = CustomResponse()
+
+        with TemporaryDirectory() as tempdir:
+            shutil.copytree('tests/samples/projects/git', os.path.join(tempdir, 'git'))
+            shutil.move(os.path.join(tempdir, 'git', 'dot_git'), os.path.join(tempdir, 'git', '.git'))
+            entity = os.path.join(tempdir, 'git', 'emptyfile.txt')
+            now = u(int(time.time()))
+            config = 'tests/samples/configs/paranoid_projects.cfg'
+            key = u(uuid.uuid4())
+            dependencies = []
+            generated_proj = 'Icy Bridge 42'
+
+            args = ['--file', entity, '--key', key, '--config', config, '--time', now, '--log-file', '~/.wakatime.log']
+
+            with mock.patch('wakatime.project.generate_project_name') as mock_proj:
+                mock_proj.return_value = generated_proj
+
+                retval = execute(args)
+
+            self.assertEquals(retval, SUCCESS)
+            self.assertNothingPrinted()
+
+            heartbeat = {
+                'language': 'Text only',
+                'lines': 0,
+                'entity': os.path.realpath(entity),
+                'project': generated_proj,
+                'time': float(now),
+                'is_write': False,
+                'type': 'file',
+                'dependencies': dependencies,
+                'user_agent': ANY,
+            }
             self.assertHeartbeatSent(heartbeat)
 
             self.assertHeartbeatNotSavedOffline()
