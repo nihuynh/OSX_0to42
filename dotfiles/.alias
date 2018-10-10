@@ -49,7 +49,9 @@ function tree {
 function clean_ds {
 	find ${@:-~} -name ".DS_Store" -delete
 }
-
+function clean_up {
+	rm -rf ~/Library/**.42_cache_bak*; rm -rf ~/**.42_cache_bak*;rm -rf ~/.Trash/*; brew cleanup
+}
 # -------------------------------------------------------------------
 #  42 alias
 alias kitty="norminette -R CheckForbiddenSourceHeader"
