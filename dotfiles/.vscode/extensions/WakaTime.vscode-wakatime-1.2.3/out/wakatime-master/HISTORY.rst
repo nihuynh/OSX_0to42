@@ -3,6 +3,28 @@ History
 -------
 
 
+10.4.1 (2018-10-05)
++++++++++++++++++++
+
+- Send 50 offline heartbeats to API per request with 1 second delay in between.
+
+
+10.4.0 (2018-10-03)
++++++++++++++++++++
+
+- Support logging coding activity to remote network drive files on Windows
+  platform by detecting UNC path from drive letter.
+  `#72 <https://github.com/wakatime/wakatime/issues/72>`_
+
+
+10.3.0 (2018-09-30)
++++++++++++++++++++
+
+- Re-enable detecting projects from Subversion folder on Windows platform.
+- Prevent opening cmd window on Windows when detecting project from Subversion.
+- Run tests on Windows using Appveyor.
+
+
 10.2.4 (2018-09-20)
 +++++++++++++++++++
 

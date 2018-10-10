@@ -20,6 +20,7 @@ from .utils import mock, json, ANY, CustomResponse, NamedTemporaryFile, Temporar
 
 class OfflineQueueTestCase(TestCase):
     patch_these = [
+        'time.sleep',
         'wakatime.packages.requests.adapters.HTTPAdapter.send',
         'wakatime.session_cache.SessionCache.save',
         'wakatime.session_cache.SessionCache.delete',
@@ -45,7 +46,7 @@ class OfflineQueueTestCase(TestCase):
 
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
     def test_heartbeat_discarded_from_400_response(self):
         with NamedTemporaryFile() as fh:
@@ -137,31 +138,31 @@ class OfflineQueueTestCase(TestCase):
 
                 body = calls[0][0][0].body
                 data = json.loads(body)[0]
-                self.assertEquals(data.get('entity'), os.path.abspath(entity1))
+                self.assertPathsEqual(data.get('entity'), os.path.abspath(entity1))
                 self.assertEquals(data.get('project'), project1)
                 self.assertEquals(u(int(data.get('time'))), now1)
 
                 body = calls[1][0][0].body
                 data = json.loads(body)[0]
-                self.assertEquals(data.get('entity'), os.path.abspath(entity2))
+                self.assertPathsEqual(data.get('entity'), os.path.abspath(entity2))
                 self.assertEquals(data.get('project'), project2)
                 self.assertEquals(u(int(data.get('time'))), now2)
 
                 body = calls[2][0][0].body
                 data = json.loads(body)[0]
-                self.assertEquals(data.get('entity'), os.path.abspath(entity3))
+                self.assertPathsEqual(data.get('entity'), os.path.abspath(entity3))
                 self.assertEquals(data.get('project'), project3)
                 self.assertEquals(u(int(data.get('time'))), now3)
 
                 body = calls[3][0][0].body
                 data = json.loads(body)[0]
-                self.assertEquals(data.get('entity'), os.path.abspath(entity1))
+                self.assertPathsEqual(data.get('entity'), os.path.abspath(entity1))
                 self.assertEquals(data.get('project'), project1)
                 self.assertEquals(u(int(data.get('time'))), now1)
 
                 body = calls[3][0][0].body
                 data = json.loads(body)[1]
-                self.assertEquals(data.get('entity'), os.path.abspath(entity2))
+                self.assertPathsEqual(data.get('entity'), os.path.abspath(entity2))
                 self.assertEquals(data.get('project'), project2)
                 self.assertEquals(u(int(data.get('time'))), now2)
 
@@ -238,15 +239,15 @@ class OfflineQueueTestCase(TestCase):
                         self.assertSessionCacheSaved()
 
                         queue = Queue(None, None)
-                        self.assertEquals(queue._get_db_file(), fh.name)
+                        self.assertPathsEqual(queue._get_db_file(), fh.name)
                         saved_heartbeats = next(queue.pop_many())
                         self.assertNothingPrinted()
                         self.assertNothingLogged(logs)
 
                         # make sure only heartbeats with error code responses were saved
                         self.assertEquals(sum(1 for x in saved_heartbeats), 2)
-                        self.assertEquals(saved_heartbeats[0].entity, os.path.realpath(os.path.join(tempdir, entities[1])))
-                        self.assertEquals(saved_heartbeats[1].entity, os.path.realpath(os.path.join(tempdir, entities[3])))
+                        self.assertPathsEqual(saved_heartbeats[0].entity, os.path.realpath(os.path.join(tempdir, entities[1])))
+                        self.assertPathsEqual(saved_heartbeats[1].entity, os.path.realpath(os.path.join(tempdir, entities[3])))
 
     @log_capture()
     def test_offline_heartbeats_sent_after_partial_success_from_bulk_response(self, logs):
@@ -467,7 +468,7 @@ class OfflineQueueTestCase(TestCase):
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
                 self.assertNothingPrinted()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
     def test_get_handles_exception_on_connect(self):
         with NamedTemporaryFile() as fh:
@@ -497,7 +498,7 @@ class OfflineQueueTestCase(TestCase):
 
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
     def test_push_handles_exception_on_connect(self):
         with NamedTemporaryFile() as fh:
@@ -673,7 +674,7 @@ class OfflineQueueTestCase(TestCase):
 
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
                 self.assertNothingPrinted()
 
@@ -737,7 +738,7 @@ class OfflineQueueTestCase(TestCase):
 
                     queue = Queue(None, None)
                     saved_heartbeat = queue.pop()
-                    self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                    self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
                     self.assertEquals(u(language), saved_heartbeat['language'])
                     self.assertEquals(u(project), saved_heartbeat['project'])
                     self.assertEquals(u(branch), saved_heartbeat['branch'])
@@ -763,7 +764,7 @@ class OfflineQueueTestCase(TestCase):
 
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
                 self.assertNothingPrinted()
                 expected = 'JSONDecodeError'
@@ -791,7 +792,7 @@ class OfflineQueueTestCase(TestCase):
 
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
                 self.assertNothingPrinted()
                 expected = 'TypeError'
@@ -819,7 +820,7 @@ class OfflineQueueTestCase(TestCase):
 
                 queue = Queue(None, None)
                 saved_heartbeat = queue.pop()
-                self.assertEquals(os.path.realpath(entity), saved_heartbeat['entity'])
+                self.assertPathsEqual(os.path.realpath(entity), saved_heartbeat['entity'])
 
                 self.assertNothingPrinted()
                 expected = 'IndexError'

@@ -28,10 +28,12 @@ function mkcd {
 function mkex {
 	for i in {00..${@:-5}} ; do; mkdir -v "ex$i" ; done
 }
+
 ip () {
 # determine local IP address
 	ifconfig | grep "inet " | awk '{ print $2 }'
 }
+
 function nscan {
 	STARTTIME=$(date +%s)
 	subnet=$(ifconfig | grep "inet " | cut -d ' ' -f 2 | sed '1d' | cut -d '.' -f 1-3)
@@ -39,12 +41,15 @@ function nscan {
 	ENDTIME=$(date +%s)
 	echo "It takes $(($ENDTIME - $STARTTIME)) seconds to complete this task..."
 }
+
 function tree {
 	find . -type d -maxdepth ${@:-2} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"
 }
+
 function clean_ds {
 	find ${@:-~} -name ".DS_Store" -delete
 }
+
 # -------------------------------------------------------------------
 #  42 alias
 alias kitty="norminette -R CheckForbiddenSourceHeader"

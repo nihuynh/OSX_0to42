@@ -6,12 +6,12 @@
 #    By: nihuynh <nihuynh@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/02 15:11:12 by nihuynh           #+#    #+#              #
-#    Updated: 2018/06/02 15:12:02 by nihuynh          ###   ########.fr        #
+#    Updated: 2018/10/10 12:21:24 by nihuynh          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-#!/bin/bash
+
 DOTPATH=$(dirname "$0")
-# Install oh-my-zsh 
+# Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 # Install brew
 git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew  && brew update
