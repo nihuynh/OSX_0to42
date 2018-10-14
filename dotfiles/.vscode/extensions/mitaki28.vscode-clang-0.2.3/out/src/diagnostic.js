@@ -33,6 +33,7 @@ function registerDiagnosticProvider(selector, provider, name) {
         const uri = change.document.uri;
         const uriStr = uri.toString();
         if (cancellers.has(uriStr)) {
+            cancellers.get(uriStr).cancel();
             cancellers.get(uriStr).dispose();
         }
         cancellers.set(uriStr, new vscode.CancellationTokenSource);
@@ -50,6 +51,7 @@ function registerDiagnosticProvider(selector, provider, name) {
         dispose() {
             collection.dispose();
             for (let canceller of Array.from(cancellers.values())) {
+                canceller.cancel();
                 canceller.dispose();
             }
             vscode.Disposable.from(...subsctiptions).dispose();
