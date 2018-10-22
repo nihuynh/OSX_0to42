@@ -1,0 +1,90 @@
+Adobe Creative Cloud
+Adobe Illustrator CC 2018
+Alfred 2.app
+App Store.app
+AppCleaner.app
+Arduino.app
+Automator.app
+Backup and Sync.app
+Bartender 3.app
+BetterTouchTool.app
+CCleaner.app
+Calculator.app
+Calendar.app
+Chess.app
+Contacts.app
+DLS v15
+DVD Player.app
+Dashboard.app
+Dashlane.app
+Dictionary.app
+Discord.app
+DiskMaker X 7 for High Sierra.app
+Docker.app
+Dropbox.app
+Extra setting.app
+FaceTime.app
+FileZilla-Installer.app
+FileZilla.app
+Firefox.app
+Flux.app
+Font Book.app
+GeoGebra Classic 6.app
+GitHub Desktop.app
+Google Chrome.app
+HandBrake.app
+Helium.app
+IINA.app
+Image Capture.app
+Install macOS High Sierra.app
+Kitematic (Beta).app
+Launchpad.app
+Logisim.app
+MAMP
+MAMP PRO.app
+Mactracker.app
+Magnet.app
+Mail.app
+Maps.app
+Messages.app
+Mission Control.app
+Notes.app
+Onshape.app
+OnyX.app
+PastaIsReady.app
+Photo Booth.app
+Photos.app
+PrefEdit.app
+Preview.app
+PyCharm CE.app
+QuickTime Player.app
+Rack.app
+Reminders.app
+Safari.app
+Shadow.app
+Siri.app
+Sonos.app
+Steam.app
+Stickies.app
+Sublime Text.app
+SuperDuper!.app
+System Preferences.app
+TeamSpeak 3 Client.app
+TextEdit.app
+The Unarchiver.app
+Time Machine.app
+TimeTag.app
+Utilities
+VLC.app
+VirtualBox.app
+Xbench.app
+Xcode.app
+coconutBattery.app
+iBooks.app
+iStat Menus.app
+iTerm.app
+iTunes.app
+kitty.app
+mampstack-7.1.22-1
+nvALT.app
+qbittorrent.app

@@ -1,0 +1,7 @@
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTSIZE=5000
+USER=nihuynh
+export USER
+MAIL="$USER@student.42.fr"
+export MAIL
