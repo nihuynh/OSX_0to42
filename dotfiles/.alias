@@ -6,7 +6,7 @@ alias clock='while true; do; clear; date; sleep 1; done'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 # Airport CLI alias
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-alias ggwp='git add -A && git commit -m "Done" && git push'
+# alias ggwp='git add -A && git commit -m "Done" && git push'
 # -------------------------------------------------------------------
 alias rm='rm -i'
 alias cp='cp -i'
@@ -51,8 +51,12 @@ function clean_ds {
 function clean_up {
 	rm -rf ~/Library/**.42_cache_bak*; rm -rf ~/**.42_cache_bak*;rm -rf ~/.Trash/*; brew cleanup
 }
+ggwp() {
+	git add -A && git commit -m "$@" && git push
+}
+
 # -------------------------------------------------------------------
-#  42 alias
+#42 alias
 alias kitty="norminette -R CheckForbiddenSourceHeader"
 alias doit="gcc -Werror -Wextra -Wall"
 alias checkit="sh $HOME/42_2018/42FileChecker/42FileChecker.sh"
