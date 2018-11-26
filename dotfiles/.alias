@@ -76,6 +76,9 @@ alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"
 function twitch() {
 	mpv --no-config --vo=libmpv --ao=coreaudio --ytdl-format="best[ext=mp4][height<=?720]" https://twitch.tv/$1;
 }
+function sc() {
+	mpv --no-config --ao=coreaudio --ytdl-format="best[ext=mp3]" https://soundcloud.com/$1;
+}
 # -------------------------------------------------------------------
 #42 alias
 alias kitty="norminette -R CheckForbiddenSourceHeader"
