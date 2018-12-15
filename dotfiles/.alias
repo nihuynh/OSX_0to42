@@ -6,30 +6,24 @@ alias clock='while true; do; clear; date; sleep 1; done'
 alias ttop='top -ocpu -R -F -s 2 -n30'
 # Airport CLI alias
 alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
-alias ggwp='git add -A && git commit -m "Done" && git push'
+# alias ggwp='git add -A && git commit -m "Done" && git push'
 # -------------------------------------------------------------------
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ls='ls -lha'
 # -------------------------------------------------------------------
-function vbc {
-	open ${@:-.} -a Visual\ Studio\ Code;
-}
-function sub {
-	open ${@:-.} -a Sublime\ Text;
-}
+function vbc { open ${@:-.} -a Visual\ Studio\ Code; }
+function sub { open ${@:-.} -a Sublime\ Text; }
 
 function mkcd {
 	dir="$*";
 	mkdir -p "$dir" && cd "$dir";
 }
-function mkex {
-	for i in {00..${@:-5}} ; do; mkdir -v "ex$i" ; done
-}
+function mkex { for i in {00..${@:-5}} ; do; mkdir -v "ex$i" ; done }
 
 ip () {
-# determine local IP address
+	# determine local IP address
 	ifconfig | grep "inet " | awk '{ print $2 }'
 }
 
@@ -51,8 +45,42 @@ function clean_ds {
 function clean_up {
 	rm -rf ~/Library/**.42_cache_bak*; rm -rf ~/**.42_cache_bak*;rm -rf ~/.Trash/*; brew cleanup
 }
+ggwp() {
+	git add -A && git commit -m "$@" && git push
+}
+# Easy way to extract archives
+extract () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1     ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+}
+#Use these for when the boss comes around to look busy.
+alias busy="cat /dev/urandom | hexdump -C | grep 'ca fe'"
+#Play Twitch streams with MPV in GUI or TTY
+#Use as: twitch username
+function twitch() {
+	mpv --no-config --vo=libmpv --ao=coreaudio --ytdl-format="best[ext=mp4][height<=?720]" https://twitch.tv/$1;
+}
+function sc() {
+	mpv --no-config --ao=coreaudio --ytdl-format="best[ext=mp3]" https://soundcloud.com/$1;
+}
 # -------------------------------------------------------------------
-#  42 alias
+#42 alias
 alias kitty="norminette -R CheckForbiddenSourceHeader"
 alias doit="gcc -Werror -Wextra -Wall"
 alias checkit="sh $HOME/42_2018/42FileChecker/42FileChecker.sh"
