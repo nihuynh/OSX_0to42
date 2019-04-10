@@ -81,6 +81,7 @@ function sc() {
 }
 # -------------------------------------------------------------------
 #42 alias
-alias kitty="norminette -R CheckForbiddenSourceHeader"
+alias kitty="norminette"
 alias doit="gcc -Werror -Wextra -Wall"
 alias checkit="sh $HOME/42_2018/42FileChecker/42FileChecker.sh"
+
