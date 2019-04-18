@@ -16,7 +16,6 @@ fi
 if [[ -f ~/.alias ]]; then
 	source ~/.alias
 fi
-export PATH=$HOME/.brew/bin:$PATH
 
 # Xquartz & docker
 # set PATH $PATH:/usr/X11R6/bin
@@ -32,6 +31,3 @@ export PATH=$HOME/.brew/bin:$PATH
 # Docker config:
 # eval $(docker-machine env)
 # IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
-export PATH=$HOME/.brew/bin:$PATH
-export PATH=/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/Users/nihuynh/.brew/bin
-export PATH=/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/Users/nihuynh/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/Users/nihuynh/.brew/bin
